@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -25,10 +26,10 @@ public class ProductController {
         return "prod";
     }
 
-    @RequestMapping("/products/details")
-    public String getTest(Model model){
-        List<Product> products =productService.getAllProducts();
-
+    @RequestMapping("/product")
+    public String getProductsDetails(@RequestParam(value = "name") String name,Model model){
+        Product product= productService.getProductByName(name);
+        model.addAttribute("product", product);
         return "desc";
     }
 
