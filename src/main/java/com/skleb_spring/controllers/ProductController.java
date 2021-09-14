@@ -1,5 +1,6 @@
 package com.skleb_spring.controllers;
 
+import com.skleb_spring.model.Category;
 import com.skleb_spring.model.Product;
 import com.skleb_spring.model.repository.ProductDAO;
 import com.skleb_spring.model.repository.ProductDAOImpl;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ProductController {
@@ -32,6 +34,13 @@ public class ProductController {
         model.addAttribute("product", product);
         return "desc";
     }
+
+    @RequestMapping("/products")
+    public String getProductsCategory(Model model){
+        Map<Category, List<Product>> listCategory=productService.getProductsByCategory();
+        return "category";
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.skleb_spring.model.repository;
 
+import com.skleb_spring.model.Category;
 import com.skleb_spring.model.Product;
 import org.springframework.stereotype.Component;
 
@@ -9,9 +10,11 @@ import java.util.List;
 @Component
 public class ProductDAOImpl implements ProductDAO {
     private List<Product> products = Arrays.asList(
-            new Product("Mydło", "Pieniące", new BigDecimal("25.00")),
-            new Product("Masło", "Się roztrzasło", new BigDecimal("99.99")),
-            new Product("Chleb", "Razowy", new BigDecimal("5.50")));
+            new Product("Torebka MK", "Torebka Michael Kors - listonoszka", new BigDecimal("1025.00"), Category.ADDITIVES),
+            new Product("Kolczyki", "Pozłacane kolczyki", new BigDecimal("29.99"), Category.ADDITIVES),
+            new Product("Botki Damskie", "Czarne Botki na obcasie", new BigDecimal("229.99"), Category.SHOES),
+            new Product("Spodnie jeansowe", "Spodnie jeansowe z kieszeniami", new BigDecimal("95.50"), Category.CLOTHES));
+
 
     @Override
     public List<Product> all() {
