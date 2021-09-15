@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
@@ -29,6 +30,12 @@ public class ProductController {
         return "prod";
     }
 
+    @RequestMapping(value = "/products/list", method = RequestMethod.POST)
+    public String createNewProduct(String name, String description, Double price, String category){
+        productService.createProductFromStrings(name,description,price,category);
+        return "redirect:/products/list";
+    }
+
     @RequestMapping("/product")
     public String getProductsDetails(@RequestParam(value = "name") String name,Model model){
         Product product= productService.getProductByName(name);
@@ -40,6 +47,8 @@ public class ProductController {
     public String getProductsCategory(@RequestParam(value = "category") String category, Model model){
         String categoryName=productService.getCategoryByCategoryName(category);
         model.addAttribute("category", categoryName);
+        List<Product> productList=productService.getProductListByCategoryName(category);
+        model.addAttribute("productList", productList);
         return "category";
     }
 

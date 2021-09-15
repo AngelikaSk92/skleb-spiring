@@ -24,6 +24,11 @@ public class Product {
         this.category = category;
     }
 
+    public Product() {
+        this.price=new BigDecimal(0);
+        this.category=Category.INNE;
+    }
+
     public void setCategory(Category category){
         this.category=category;
     }
@@ -43,6 +48,8 @@ public class Product {
     public BigDecimal getPrice() {
         return price;
     }
+
+
 
     @Override
     public String toString() {

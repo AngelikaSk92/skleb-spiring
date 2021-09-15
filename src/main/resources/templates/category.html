@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container">
-<table class="table table-striped">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th scope="col">Produkt</th>
@@ -20,13 +20,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="product : ${products}">
-            <td th:text="${product.category}">/<td>
-
+        <tr th:each="product : ${productList}">
+            <td><a th:href="${'/product?name='+product.name}"><span th:text="${product.name}"></span></a></td>
+            <td th:text="${product.price}">/<td>
         </tr>
         </tbody>
     </table>
-
 </div>
+
 </body>
 </html>

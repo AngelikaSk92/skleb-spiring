@@ -21,11 +21,12 @@
         </thead>
         <tbody>
         <tr th:each="product : ${products}">
-            <td th:text="${product.name}">/<td>
-            <td><a th:href="${'/product?name='+product.name}"><span th:text="${product.price}"></span></a></td>
+            <td><a th:href="${'/product?name='+product.name}"><span th:text="${product.name}"></span></a></td>
+            <td th:text="${product.price}">/<td>
         </tr>
         </tbody>
     </table>
 </div>
+
 </body>
 </html>

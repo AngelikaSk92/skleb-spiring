@@ -69,10 +69,24 @@ public class ProductService {
         return null;
     }
 
+    public List<Product> getProductListByCategoryName(String categoryName){
+        Map<Category,List<Product>> categoryListMap = getProductsByCategory();
+        List<Product> listOfProductsByCategory=new ArrayList<>();
+        for (Map.Entry<Category, List<Product>> clm : categoryListMap.entrySet()) {
+            if(categoryName.equals(clm.getKey().name())){
+                listOfProductsByCategory=clm.getValue();
+            }
+        }
+        return listOfProductsByCategory;
+    }
 
 
+    public void saveNewProduct(Product product) {
 
 
+    }
 
-
+    public void createProductFromStrings(String name, String description, double price, String category){
+        productDAO.createProductStringValues(name,description,price,category);
+    }
 }
