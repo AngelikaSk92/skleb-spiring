@@ -41,6 +41,35 @@ public class ProductService {
         return categoryListMap;
     }
 
+    public List<Category> getCategoryUniqueName(){
+        List<Category> uniqueCategoryName=new ArrayList<>();
+        Map<Category, List<Product>> listOfCategory = getProductsByCategory();
+        for (Map.Entry<Category, List<Product>> categoryListMap : listOfCategory.entrySet()) {
+            uniqueCategoryName.add(categoryListMap.getKey());
+        }
+        return uniqueCategoryName;
+    }
+
+    public List<String> getCategoryUniqueStringName(){
+        List<String> uniqueCategoryName=new ArrayList<>();
+        Map<Category, List<Product>> listOfCategory = getProductsByCategory();
+        for (Map.Entry<Category, List<Product>> categoryListMap : listOfCategory.entrySet()) {
+            uniqueCategoryName.add(categoryListMap.getKey().name());
+        }
+        return uniqueCategoryName;
+    }
+
+    public String getCategoryByCategoryName(String categoryName){
+        List<String> uniqueCategoryName=getCategoryUniqueStringName();
+        for(String s: uniqueCategoryName){
+            if(s.equals(categoryName)){
+                return s;
+            }
+        }
+        return null;
+    }
+
+
 
 
 

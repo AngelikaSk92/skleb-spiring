@@ -10,4 +10,7 @@ public class SklebSpiringApplication {
 		SpringApplication.run(SklebSpiringApplication.class, args);
 	}
 
+
+
+
 }

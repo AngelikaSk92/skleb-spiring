@@ -8,4 +8,6 @@ public interface ProductDAO {
     List<Product> all();
 
     Product byName(String name);
+
+
 }

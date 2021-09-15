@@ -14,7 +14,7 @@ public class Product {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.category=Category.OTHERS;
+        this.category=Category.INNE;
     }
 
     public Product(String name, String description, BigDecimal price, Category category) {
@@ -42,5 +42,15 @@ public class Product {
 
     public BigDecimal getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", category=" + category +
+                '}';
     }
 }

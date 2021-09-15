@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title> Kategorie Produktowe</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <style>
+  .bg-1 {
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+  }
+  .bg-2 {
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+  }
+  .bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
+  }
+  </style>
+
+</head>
+<body>
+<div class="container-fluid bg-2 text-center">
+    <h1>ANGIE CLOTHES</h1>
+    <h3>SKLEP INTERNETOWY</h3>
+    <p><i>Show me what you are wearing and I will tell you who you are...</i></p>
+</div>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Kategorie</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category : ${categories}">
+            <td><a th:href="${'/category?category='+category}"><span th:text="${category}"></span></a></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+</body>
+</html>

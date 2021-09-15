@@ -5,9 +5,9 @@ package com.skleb_spring.model;
  */
 public enum Category {
 
-    SHOES,
-    CLOTHES,
-    ADDITIVES,
-    OTHERS
+    OBUWIE,
+    UBRANIA,
+    DODATKI,
+    INNE
 
 }

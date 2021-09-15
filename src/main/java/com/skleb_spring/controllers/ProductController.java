@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,12 +36,19 @@ public class ProductController {
         return "desc";
     }
 
-    @RequestMapping("/products")
-    public String getProductsCategory(Model model){
-        Map<Category, List<Product>> listCategory=productService.getProductsByCategory();
+    @RequestMapping("/category")
+    public String getProductsCategory(@RequestParam(value = "category") String category, Model model){
+        String categoryName=productService.getCategoryByCategoryName(category);
+        model.addAttribute("category", categoryName);
         return "category";
     }
 
+    @RequestMapping("/category/list")
+    public String getCategoryList(Model model){
+        List<String> categoryList= productService.getCategoryUniqueStringName();
+        model.addAttribute("categories", categoryList);
+        return "categoryView";
+    }
 
 
 }
