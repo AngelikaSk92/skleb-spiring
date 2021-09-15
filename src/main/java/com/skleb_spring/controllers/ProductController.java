@@ -23,18 +23,9 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @RequestMapping("/products/list")
-    public String getProductsList(Model model){
-        List<Product> products =productService.getAllProducts();
-        model.addAttribute("products", products);
-        return "prod";
-    }
 
-    @RequestMapping(value = "/products/list", method = RequestMethod.POST)
-    public String createNewProduct(String name, String description, Double price, String category){
-        productService.createProductFromStrings(name,description,price,category);
-        return "redirect:/products/list";
-    }
+
+
 
     @RequestMapping("/product")
     public String getProductsDetails(@RequestParam(value = "name") String name,Model model){

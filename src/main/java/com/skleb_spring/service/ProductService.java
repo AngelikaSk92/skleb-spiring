@@ -89,4 +89,18 @@ public class ProductService {
     public void createProductFromStrings(String name, String description, double price, String category){
         productDAO.createProductStringValues(name,description,price,category);
     }
+
+    public Product findProductByName(String name){
+        for(Product p: productDAO.all()){
+            if(p.getName().equals(name)){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public void deleteProduct(String name) {
+        Product product = findProductByName(name);
+        productDAO.all().remove(product);
+    }
 }
