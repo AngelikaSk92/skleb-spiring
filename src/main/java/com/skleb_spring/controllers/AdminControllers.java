@@ -5,10 +5,12 @@ import com.skleb_spring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -31,9 +33,19 @@ public class AdminControllers {
     }
 
     @RequestMapping(value = "/category/admin/products/list", method = RequestMethod.POST)
-    public String createNewProduct(String name, String description, Double price, String category){
-        productService.createProductFromStrings(name,description,price,category);
-        return "redirect:/category/admin/products/list";
+    public String createNewProduct(@Valid Product product, BindingResult  bindingResult){
+        if(bindingResult.hasErrors()){
+            System.out.println("ERROR");
+            bindingResult.getAllErrors().forEach(e->{
+                System.out.println(e.getDefaultMessage());
+            });
+            return "redirect:/admin";
+        }else {
+            productService.saveNewProduct(product);
+            return "redirect:/category/admin/products/list";
+        }
+
+
     }
 
     @RequestMapping("/product/delete/{name}")

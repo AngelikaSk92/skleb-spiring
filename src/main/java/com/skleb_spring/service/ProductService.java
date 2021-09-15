@@ -4,11 +4,12 @@ import com.skleb_spring.model.Category;
 import com.skleb_spring.model.Product;
 import com.skleb_spring.model.repository.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.transform.AbstractProcessTask;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductService {
@@ -82,7 +83,7 @@ public class ProductService {
 
 
     public void saveNewProduct(Product product) {
-
+        productDAO.addProduct(product);
 
     }
 
