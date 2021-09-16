@@ -6,6 +6,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.Objects;
+
 public class Product {
 
     @NotNull(message = "Nazwa produktu nie może być pusta")
@@ -83,5 +85,18 @@ public class Product {
                 ", price=" + price +
                 ", category=" + category +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && category == product.category;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, price, category);
     }
 }

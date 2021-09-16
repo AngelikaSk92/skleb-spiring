@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
+//@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CartDAO {
 
     Map<Product, Integer> cart=new HashMap<>();
