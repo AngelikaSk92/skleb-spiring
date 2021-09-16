@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Edytuj produkt</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<div class="container">
+    <form class="form-horizontal" th:object="${productToEdit}" th:action="@{/product/edit/{name}(name=${productToEdit.name})}" th:method="post">
+        <div class="form-group">
+            <label class="control-label">nazwa produktu:</label>
+            <input type="text" class="form-control" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <label class="control-label">opis:</label>
+            <input type="text" class="form-control" th:field="*{description}">
+        </div>
+        <div class="form-group">
+            <label class="control-label">cena:</label>
+            <input type="number" placeholder="0.00" required name="price" min="0" value="0" step="0.01" class="form-control" th:field="*{price}">
+            <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+        </div>
+        <div class="form-group">
+            <label class="control-label">kategoria:</label>
+            <select name="category">
+                <option th:each="cat : ${T(com.skleb_spring.model.Category).values()}"
+                        th:value="${cat}" th:text="${cat}"></option>
+            </select>
+        </div>
+        <div class="row">
+            <button type="submit" value="Update" class="btn btn-default">Edytuj</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

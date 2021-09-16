@@ -48,12 +48,28 @@ public class AdminControllers {
 
 
     }
-
     @RequestMapping("/product/delete/{name}")
     public String deleteProduct(@PathVariable("name") String name){
         productService.deleteProduct(name);
         return "redirect:/category/admin/products/list";
     }
+
+    @RequestMapping("product/edit/{name}")
+    public String editProduct(@PathVariable("name") String name, Model model){
+        Product product = productService.getProductByName(name);
+        productService.deleteProduct(name);
+        model.addAttribute("productToEdit", product);
+        model.addAttribute("nameToLink", name);
+        return "editform";
+    }
+
+    @RequestMapping(value = "product/edit/{name}", method = RequestMethod.POST)
+    public String updateProduct(@PathVariable("name") String name, Model model, @ModelAttribute ("productToEdit") Product product){
+        productService.updateProduct(product);
+        return "redirect:/category/admin/products/list";
+    }
+
+
 
 
 }

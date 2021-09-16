@@ -104,4 +104,8 @@ public class ProductService {
         Product product = findProductByName(name);
         productDAO.all().remove(product);
     }
+
+    public void updateProduct(Product newProduct) {
+        productDAO.all().add(newProduct);
+    }
 }
