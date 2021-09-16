@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Zawartosc koszyka</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{webjars/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
+
+
+</head>
+<body>
+<div class="container">
+    <h2>Zawartość koszyka</h2>
+    <table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <td>produkt</td>
+            <td>cena</td>
+            <td>ilosc</td>
+        </tr>
+    </thead>
+        <tbody>
+        <tr th:each="element:${cart}">
+            <td th:text="${element.key.name}">/<td>
+            <td th:text="${element.key.price}">/<td>
+            <td th:text="${element.value}">/<td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h2>TOTAL</h2>
+    <p th:text="${total}"></p>
+</div>
+
+
+
+</body>
+</html>
