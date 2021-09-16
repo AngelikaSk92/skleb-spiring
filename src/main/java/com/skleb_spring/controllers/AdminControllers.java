@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +20,7 @@ public class AdminControllers {
     @Autowired
     ProductService productService;
 
-    @RequestMapping("/admin")
+    @RequestMapping("/category/admin")
     public String addNewProduct(Model model){
         model.addAttribute("emptyProduct",new Product());
         return "productaddform";
@@ -33,13 +34,13 @@ public class AdminControllers {
     }
 
     @RequestMapping(value = "/category/admin/products/list", method = RequestMethod.POST)
-    public String createNewProduct(@Valid Product product, BindingResult  bindingResult){
+    public String createNewProduct(@Valid  @ModelAttribute("emptyProduct") Product product, BindingResult  bindingResult){
         if(bindingResult.hasErrors()){
             System.out.println("ERROR");
             bindingResult.getAllErrors().forEach(e->{
                 System.out.println(e.getDefaultMessage());
             });
-            return "redirect:/admin";
+            return "productaddform";
         }else {
             productService.saveNewProduct(product);
             return "redirect:/category/admin/products/list";

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title>Strona główna</title>
+    <title>Lista prdouktów</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
     <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
@@ -15,8 +15,10 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">Produkt</th>
+            <th scope="col">produkt</th>
             <th scope="col">cena</th>
+            <th scope="col">kategoria</th>
+            <th scope="col">akcja</th>
         </tr>
         </thead>
         <tbody>
@@ -32,8 +34,8 @@
 
 <div class="row align-items-center">
     <div class="text-center col-md-5 col-md-offset-3">
-        <div class="col" style="background:red">
-            <a href="/admin">Dodaj nowy produkt</a>
+        <div class="col" style="background:pink">
+            <a href="/category/admin">Dodaj nowy produkt</a>
         </div>
     </div>
 </div>
