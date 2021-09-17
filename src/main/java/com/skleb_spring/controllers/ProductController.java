@@ -31,7 +31,7 @@ public class ProductController {
         return "category";
     }
 
-    @RequestMapping("/category/list")
+    @RequestMapping(value = {"/category/list", "/"})
     public String getCategoryList(Model model){
         List<String> categoryList= productService.getCategoryUniqueStringName();
         model.addAttribute("categories", categoryList);

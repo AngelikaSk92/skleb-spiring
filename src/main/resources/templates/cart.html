@@ -11,7 +11,16 @@
     <script th:src="@{webjars/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
 
     <style>
-
+.pinkm {
+  text-align: center;
+  color: black;
+  margin-center;
+}
+.pinkm2 {
+ background-color: #F08080;
+  text-align: center;
+  color: black;
+}
 
 
 </style>
@@ -50,6 +59,19 @@
 <div class="container">
     <h2>TOTAL</h2>
     <p th:text="${total}"></p>
+</div>
+<div class="pinkm2 container">
+    <div class="pinkm">
+    <a href="/category/list" class="btn btn-danger btn btn-primary">Kontynuuj zakupy</a>
+    <a href="/cart/delete" class="btn btn-danger btn btn-primary">Wyczyść koszyk</a>
+
+    </div>
+</div>
+<br>
+<br>
+<div class="pinkm2 container">
+    <h2>Zamów tutaj</h2>
+    <a href="/cart/order" class="btn btn-danger btn btn-primary">Złóż zamówienie z obowiązkiem zapłaty</a>
 </div>
 
 

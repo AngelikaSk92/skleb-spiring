@@ -3,6 +3,7 @@ package com.skleb_spring;
 import com.skleb_spring.model.Category;
 import com.skleb_spring.model.Product;
 import com.skleb_spring.model.repository.CartDAO;
+import com.skleb_spring.model.repository.OrderDAO;
 import com.skleb_spring.model.repository.ProductDAO;
 import com.skleb_spring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 @Component
 public class Starter implements CommandLineRunner {
@@ -23,6 +25,9 @@ public class Starter implements CommandLineRunner {
 
     @Autowired
     CartDAO cartDAO;
+
+    @Autowired
+    OrderDAO orderDAO;
 
 
     @Override
@@ -38,15 +43,32 @@ public class Starter implements CommandLineRunner {
 
         Product product = new Product("TEST", "TEST TEST", new BigDecimal(1000), Category.UBRANIA);
 
-//        cartDAO.addProductToCart(product, 1);
-//        cartDAO.addProductToCart(product, 1);
-//        cartDAO.addProductToCart(product, 1);
-//        Product product1 = productService.getProductByName("Torebka MK");
-//        cartDAO.addProductToCart(product1,1);
-//        for(Map.Entry<Product,Integer> entry: cartDAO.getAllProductsFromCart().entrySet()){
-//            System.out.println(entry.getKey().toString());
-//            System.out.println(entry.getValue());
-//        }
+        cartDAO.addProductToCart(product, 1);
+        cartDAO.addProductToCart(product, 1);
+        cartDAO.addProductToCart(product, 1);
+        Product product1 = productService.getProductByName("Torebka MK");
+        cartDAO.addProductToCart(product1,1);
+        for(Map.Entry<Product,Integer> entry: cartDAO.getAllProductsFromCart().entrySet()){
+            System.out.println(entry.getKey().toString());
+            System.out.println(entry.getValue());
+        }
+
+        System.out.println(cartDAO.getAllProductsFromCart().toString());
+  //      Order order = orderDAO.createNewOrder();
+  //      order.toString();
+//        Order order = new Order();
+//        order.setCart(cartDAO.getAllProductsFromCart());
+//        order.setAmount(cartDAO.getTotalFromCart());
+//        order.setOrderNumber(orderDAO.createUniqueOrderNumber());
+//
+//        System.out.println(order.getAmount());
+//        System.out.println(order.getOrderNumber());
+
+
+   //     System.out.println(orderDAO.getOrderByOrderNumber(1));
+
+
+
 
 
     }

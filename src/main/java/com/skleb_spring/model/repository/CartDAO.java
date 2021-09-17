@@ -21,6 +21,7 @@ public class CartDAO {
         }
     }
 
+
     public Map<Product,Integer> getAllProductsFromCart(){
         return cart;
     }
@@ -42,5 +43,9 @@ public class CartDAO {
 
     public void deleteProductFromCart(Product product) {
         if(cart.containsKey(product))  cart.remove(product);
+    }
+
+    public void deleteAllProducts() {
+        cart.clear();
     }
 }

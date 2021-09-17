@@ -26,14 +26,14 @@ public class AdminControllers {
         return "productaddform";
     }
 
-    @RequestMapping("/category/admin/products/list")
+    @RequestMapping("/admin/products/list")
     public String getProductsList(Model model){
         List<Product> products =productService.getAllProducts();
         model.addAttribute("products", products);
         return "prod";
     }
 
-    @RequestMapping(value = "/category/admin/products/list", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/products/list", method = RequestMethod.POST)
     public String createNewProduct(@Valid  @ModelAttribute("emptyProduct") Product product, BindingResult  bindingResult){
         if(bindingResult.hasErrors()){
             System.out.println("ERROR");
@@ -43,7 +43,7 @@ public class AdminControllers {
             return "productaddform";
         }else {
             productService.saveNewProduct(product);
-            return "redirect:/category/admin/products/list";
+            return "redirect:/admin/products/list";
         }
 
 
@@ -51,7 +51,7 @@ public class AdminControllers {
     @RequestMapping("/product/delete/{name}")
     public String deleteProduct(@PathVariable("name") String name){
         productService.deleteProduct(name);
-        return "redirect:/category/admin/products/list";
+        return "redirect:/admin/products/list";
     }
 
     @RequestMapping("product/edit/{name}")
@@ -64,9 +64,9 @@ public class AdminControllers {
     }
 
     @RequestMapping(value = "product/edit/{name}", method = RequestMethod.POST)
-    public String updateProduct(@PathVariable("name") String name, Model model, @ModelAttribute ("productToEdit") Product product){
+    public String updateProduct(@PathVariable("name") String name, @ModelAttribute ("productToEdit") Product product){
         productService.updateProduct(product);
-        return "redirect:/category/admin/products/list";
+        return "redirect:/admin/products/list";
     }
 
 

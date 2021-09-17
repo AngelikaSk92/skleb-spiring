@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title> Zamówienie</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+    <div class="container">
+
+        <h2>Wartość koszyka</h2>
+        <br>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Wartość koszyka</th>
+            </tr>
+            </thead>
+            <tbody>
+            <td th:text="${cartValueFromMyOrder}">/<td>
+            </td>
+            </tbody>
+        </table>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Wybrana opcja dostawy</th>
+            </tr>
+            </thead>
+            <tbody>
+            <td th:text="${deliveryOptionsFromMyOrder}">/<td>
+            </td>
+            </tbody>
+        </table>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Wybrana opcja dostawy</th>
+            </tr>
+            </thead>
+            <tbody>
+            <td th:number="${deliveryPriceFromMyOrder}">/<td>
+            </td>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

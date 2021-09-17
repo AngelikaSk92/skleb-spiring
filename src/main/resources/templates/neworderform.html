@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title> Zamówienie</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Wartość koszyka</h2>
+    <br>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Wartość koszyka</th>
+        </tr>
+        </thead>
+        <tbody>
+        <td th:text="${cartValue}">/<td>
+        </td>
+        </tbody>
+    </table>
+</div>
+
+<form class="form-horizontal" th:object="${order}" th:action="@{/cart/order/{orderNumber}(orderNumber=${order.getOrderNumber()})}" th:method="post">
+
+    <input type="hidden" th:field = "*{orderNumber}"/>
+    <input type="hidden" th:field = "*{cart}"/>
+    <input type="hidden" th:field = "*{amount}"/>
+
+<div class="form-group">
+    <label class="control-label">OPCJA DOSTAWY:</label>
+    <select th:field="*{delivery}">
+        <option th:each="del : ${deliveryOptions}"
+                th:value="${del.deliveryName}" th:text="${del.deliveryName}"></option>
+    </select>
+</div>
+    <div class="row">
+        <button type="submit" class="btn btn-default">ZAMÓW</button>
+    </div>
+
+</form>
+</body>
+</html>

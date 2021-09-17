@@ -10,18 +10,34 @@
     <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
     <script th:src="@{webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
     <style>
-  .bg-1 {
-    background-color: #1abc9c; /* Green */
-    color: #ffffff;
-  }
-  .bg-2 {
-    background-color: #474e5d; /* Dark Blue */
-    color: #ffffff;
-  }
-  .bg-3 {
-    background-color: #ffffff; /* White */
-    color: #555555;
-  }
+  .navbar {
+  margin-bottom: 0;
+  background-color: #FF69B4;
+  z-index: 9999;
+  border: 0;
+  font-size: 12px !important;
+  line-height: 1.42857143 !important;
+  letter-spacing: 4px;
+  border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+  color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+  color: #FF69B4 !important;
+  background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff !important;
+}
+
+
+
+
   </style>
 
 </head>
@@ -37,12 +53,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Logo</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/cart">KOSZYK</a></li>
-                <li><a href="admin/products/list">ADMIN</a></li>
+                <li><a href="/admin/products/list">ADMIN</a></li>
                 <li><a href="/about">O NAS</a></li>
             </ul>
         </div>
@@ -74,5 +89,8 @@
     </table>
     </div>
 </div>
+
+
+
 </body>
 </html>
