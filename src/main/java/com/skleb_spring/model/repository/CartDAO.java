@@ -40,6 +40,7 @@ public class CartDAO {
     }
 
 
-
-
+    public void deleteProductFromCart(Product product) {
+        if(cart.containsKey(product))  cart.remove(product);
+    }
 }

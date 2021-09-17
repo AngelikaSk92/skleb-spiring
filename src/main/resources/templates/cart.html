@@ -10,28 +10,43 @@
     <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
     <script th:src="@{webjars/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
 
+    <style>
 
+
+
+</style>
 </head>
-<body>
+<body style = "background-color: pink">
 <div class="container">
-    <h2>Zawartość koszyka</h2>
+    <br>
+    <br>
+    <h1>Zawartość koszyka</h1>
+    <br>
+    <br>
+    <br>
     <table class="table">
     <thead class="thead-dark">
         <tr>
-            <td>produkt</td>
-            <td>cena</td>
-            <td>ilosc</td>
+            <th scope="col">#</th>
+            <th scope="col">produkt</th>
+            <th scope="col">cena</th>
+            <th scope="col">ilosc</th>
         </tr>
     </thead>
         <tbody>
         <tr th:each="element:${cart}">
+            <th scope="row">*</th>
             <td th:text="${element.key.name}">/<td>
             <td th:text="${element.key.price}">/<td>
             <td th:text="${element.value}">/<td>
+            <td><a th:href="${'/cart/delete/'+element.key.name}">Usun z koszyka</a></td>
         </tr>
         </tbody>
     </table>
 </div>
+<br>
+<br>
+<br>
 <div class="container">
     <h2>TOTAL</h2>
     <p th:text="${total}"></p>

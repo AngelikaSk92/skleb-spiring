@@ -37,5 +37,14 @@ public class CartController {
         return "redirect:/cart";
     }
 
+    @RequestMapping("/cart/delete/{name}")
+    public String deleteProductFromCart(@PathVariable("name") String name){
+        Product product = productService.getProductByName(name);
+        cartDAO.deleteProductFromCart(product);
+        return "redirect:/cart";
+    }
+
+
+
 
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 @Component
 public class ProductDAOImpl implements ProductDAO {
