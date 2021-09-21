@@ -52,4 +52,8 @@ public class OrderDAO {
         orders.remove(getOrderByOrderNumber(order.getOrderNumber()));
         orders.add(order);
     }
+
+    public void saveOrder(Order order) {
+        orders.add(order);
+    }
 }
