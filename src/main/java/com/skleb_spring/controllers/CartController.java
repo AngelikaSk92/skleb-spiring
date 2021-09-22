@@ -68,22 +68,24 @@ public class CartController {
         model.addAttribute("order", order);
         model.addAttribute("cartValue",cartDAO.getTotalFromCart());
         model.addAttribute("deliveryOptions",deliveryDAO.getDeliveryOptions());
-        orderDAO.saveOrder(order);
         return "neworderform";
     }
 
-    @RequestMapping(value = "/cart/order/{orderNumber}", method = RequestMethod.POST)
-    public String choseDelivery(@ModelAttribute("order") Order order){
+    @RequestMapping(value = "/cart/order", method = RequestMethod.POST)
+    public String choseDelivery(@ModelAttribute("orderId") Order order){
         orderDAO.updateOrder(order);
         return "redirect:/cart/order";
     }
 
-//    @RequestMapping(value = "/cart/order/{orderNumber}")
-//    public String finishDelivery(@PathVariable("orderNumber") int orderNumber,  Model model){
-////            Order order = orderDAO.getOrderByOrderNumber(orderNumber);
-////
-//        return "orderfinishpage";
-//    }
+    @RequestMapping(value = "/cart/order/{orderNumber}")
+    public String finishDelivery(@PathVariable("orderNumber") int orderNumber,  Model model){
+//            Order order = orderDAO.getOrderByOrderNumber(orderNumber);
+//            model.addAttribute("cartValueFromMyOrder",order.getAmount());
+//            model.addAttribute("deliveryOptionsFromMyOrder", order.getDelivery().getDeliveryName());
+//            model.addAttribute("deliveryPriceFromMyOrder", order.getDelivery().getDeliveryPrice());
+//            model.addAttribute("totalToPayFromMyOrder", order.getAmount().add(order.getDelivery().getDeliveryPrice()));
+        return "orderfinishpage";
+    }
 
 
 

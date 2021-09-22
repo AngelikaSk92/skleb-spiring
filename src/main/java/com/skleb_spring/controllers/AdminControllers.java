@@ -1,6 +1,8 @@
 package com.skleb_spring.controllers;
 
+import com.skleb_spring.model.Order;
 import com.skleb_spring.model.Product;
+import com.skleb_spring.model.repository.OrderDAO;
 import com.skleb_spring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class AdminControllers {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    OrderDAO orderDAO;
 
     @RequestMapping("/category/admin")
     public String addNewProduct(Model model){
@@ -67,6 +72,16 @@ public class AdminControllers {
     public String updateProduct(@PathVariable("name") String name, @ModelAttribute ("productToEdit") Product product){
         productService.updateProduct(product);
         return "redirect:/admin/products/list";
+    }
+
+    @RequestMapping(value = "admin/orders")
+    public String seeAllOrders(Model model){
+
+        List<Order> orders= orderDAO.getAllOrders();
+        model.addAttribute("orders", orders);
+
+
+        return "orders";
     }
 
 

@@ -1,5 +1,6 @@
 package com.skleb_spring.model.repository;
 
+import com.skleb_spring.model.Cart;
 import com.skleb_spring.model.Product;
 import org.springframework.stereotype.Component;
 
@@ -11,24 +12,24 @@ import java.util.Map;
 //@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CartDAO {
 
-    Map<Product, Integer> cart=new HashMap<>();
+    Cart cart=new Cart(new HashMap<>());
 
     public void addProductToCart(Product product, Integer quantity){
-        if(cart.containsKey(product)){
-            cart.put(product,cart.get(product) + quantity);
+        if(cart.getCart().containsKey(product)){
+            cart.getCart().put(product,cart.getCart().get(product) + quantity);
         }else{
-            cart.put(product,quantity);
+            cart.getCart().put(product,quantity);
         }
     }
 
 
-    public Map<Product,Integer> getAllProductsFromCart(){
+    public Cart getAllProductsFromCart(){
         return cart;
     }
 
     public BigDecimal getTotalFromCart(){
         BigDecimal total=BigDecimal.ZERO;
-        for(Map.Entry<Product,Integer> entry : cart.entrySet()){
+        for(Map.Entry<Product,Integer> entry : cart.getCart().entrySet()){
             BigDecimal quantity = new BigDecimal(entry.getValue());
             total= total.add(entry.getKey().getPrice().multiply(quantity));
         }
@@ -42,10 +43,10 @@ public class CartDAO {
 
 
     public void deleteProductFromCart(Product product) {
-        if(cart.containsKey(product))  cart.remove(product);
+        if(cart.getCart().containsKey(product))  cart.getCart().remove(product);
     }
 
     public void deleteAllProducts() {
-        cart.clear();
+        cart.getCart().clear();
     }
 }

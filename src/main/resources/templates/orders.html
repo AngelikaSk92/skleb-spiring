@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Lista produtków</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+    table, th, td {
+  border:1px solid black;
+}
+</style>
+</head>
+
+</head>
+<body>
+<table style="width:100%">
+<tr th:each="order : ${orders}">
+    <br><br>
+    <p>ZAMÓWIENIE NR:</p>
+  <p th:text="${order.orderNumber}"></p>
+    <ul>
+        <table style="width:100%">
+            <tr>
+                <td>Produkt</td>
+                <td>Cena</td>
+                <td>Ilość sztuk</td>
+                <td>Total</td>
+            </tr>
+
+        <tr th:each="element : ${order.cart.getCart()}">
+            <td th:text="${element.key.name}"></td>
+            <td th:text="${element.key.price}"></td>
+            <td th:text="${element.value}"></td>
+            <td th:text="${element.value}*${element.key.price}"></td>
+        </tr>
+            </table>
+
+    </ul>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

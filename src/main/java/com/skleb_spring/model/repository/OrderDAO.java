@@ -3,6 +3,8 @@ package com.skleb_spring.model.repository;
 import com.skleb_spring.model.Delivery;
 import com.skleb_spring.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Component
+
 public class OrderDAO {
 
     private List<Order> orders = new ArrayList<>();
@@ -32,7 +35,6 @@ public class OrderDAO {
         Order order = new Order();
         order.setCart(cartDAO.getAllProductsFromCart());
         order.setAmount(cartDAO.getTotalFromCart());
-        order.setOrderNumber(createUniqueOrderNumber());
         Delivery delivery=new Delivery();
         order.setDelivery(delivery);
         return order;
@@ -55,5 +57,9 @@ public class OrderDAO {
 
     public void saveOrder(Order order) {
         orders.add(order);
+    }
+
+    public List<Order> getAllOrders() {
+        return orders;
     }
 }

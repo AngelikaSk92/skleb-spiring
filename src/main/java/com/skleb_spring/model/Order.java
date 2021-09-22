@@ -5,18 +5,13 @@ import java.util.Map;
 
 public class Order {
 
-    private int orderNumber;
-    private Map<Product, Integer> cart;
+    private static int orderNumber=0;
+    private Cart cart;
     private BigDecimal amount;
     private Delivery delivery;
 
-
-    public Delivery getDelivery() {
-        return delivery;
-    }
-
-    public void setDelivery(Delivery delivery) {
-        this.delivery = delivery;
+    public Order() {
+        orderNumber++;
     }
 
     public int getOrderNumber() {
@@ -27,11 +22,20 @@ public class Order {
         this.orderNumber = orderNumber;
     }
 
-    public Map<Product, Integer> getCart() {
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
+
+
+    public Cart getCart() {
         return cart;
     }
 
-    public void setCart(Map<Product, Integer> cart) {
+    public void setCart(Cart cart) {
         this.cart = cart;
     }
 

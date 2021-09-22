@@ -12,18 +12,18 @@
 <body>
     <div class="container">
 
-        <h2>Wartość koszyka</h2>
+        <h2>ZAMÓWIENIE NR "</h2><h2 th:text =${orderNumber}></h2>
         <br>
         <br>
         <br>
         <table class="table">
             <thead>
             <tr>
-                <th>Wartość koszyka</th>
+                <th>DZIĘKUJEMY ZA ZŁOŻENIE ZAMÓWIENIA O WARTOŚCI:</th>
             </tr>
             </thead>
             <tbody>
-            <td th:text="${cartValueFromMyOrder}">/<td>
+            <td th:text="${orderAmount}">/<td>
             </td>
             </tbody>
         </table>
@@ -35,22 +35,11 @@
             </tr>
             </thead>
             <tbody>
-            <td th:text="${deliveryOptionsFromMyOrder}">/<td>
+            <td th:text="${delivery}">/<td>
             </td>
             </tbody>
         </table>
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Wybrana opcja dostawy</th>
-            </tr>
-            </thead>
-            <tbody>
-            <td th:number="${deliveryPriceFromMyOrder}">/<td>
-            </td>
-            </tbody>
-        </table>
 
     </div>
 </body>

@@ -48,10 +48,7 @@ public class Starter implements CommandLineRunner {
         cartDAO.addProductToCart(product, 1);
         Product product1 = productService.getProductByName("Torebka MK");
         cartDAO.addProductToCart(product1,1);
-        for(Map.Entry<Product,Integer> entry: cartDAO.getAllProductsFromCart().entrySet()){
-            System.out.println(entry.getKey().toString());
-            System.out.println(entry.getValue());
-        }
+
 
         System.out.println(cartDAO.getAllProductsFromCart().toString());
   //      Order order = orderDAO.createNewOrder();

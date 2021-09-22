@@ -34,4 +34,12 @@ public class Delivery {
     public void setDeliveryPrice(BigDecimal deliveryPrice) {
         this.deliveryPrice = deliveryPrice;
     }
+
+    @Override
+    public String toString() {
+        return "Delivery{" +
+                "deliveryName='" + deliveryName + '\'' +
+                ", deliveryPrice=" + deliveryPrice +
+                '}';
+    }
 }
