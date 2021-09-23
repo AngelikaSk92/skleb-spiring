@@ -25,9 +25,9 @@ public class ProductService {
         return productDAO.byName(name);
     }
 
-    public Map<Category, List<Product>> getProductsByCategory(){
+    public Map<String, List<Product>> getProductsByCategory(){
 
-        Map<Category,List<Product>> categoryListMap = new HashMap<>();
+        Map<String,List<Product>> categoryListMap = new HashMap<>();
         for(Product p : productDAO.all()){
             if(categoryListMap.containsKey(p.getCategory())){
                 List<Product> listDoEdit=categoryListMap.get(p.getCategory());
@@ -42,10 +42,10 @@ public class ProductService {
         return categoryListMap;
     }
 
-    public List<Category> getCategoryUniqueName(){
-        List<Category> uniqueCategoryName=new ArrayList<>();
-        Map<Category, List<Product>> listOfCategory = getProductsByCategory();
-        for (Map.Entry<Category, List<Product>> categoryListMap : listOfCategory.entrySet()) {
+    public List<String> getCategoryUniqueName(){
+        List<String> uniqueCategoryName=new ArrayList<>();
+        Map<String, List<Product>> listOfCategory = getProductsByCategory();
+        for (Map.Entry<String, List<Product>> categoryListMap : listOfCategory.entrySet()) {
             uniqueCategoryName.add(categoryListMap.getKey());
         }
         return uniqueCategoryName;
@@ -53,9 +53,9 @@ public class ProductService {
 
     public List<String> getCategoryUniqueStringName(){
         List<String> uniqueCategoryName=new ArrayList<>();
-        Map<Category, List<Product>> listOfCategory = getProductsByCategory();
-        for (Map.Entry<Category, List<Product>> categoryListMap : listOfCategory.entrySet()) {
-            uniqueCategoryName.add(categoryListMap.getKey().name());
+        Map<String, List<Product>> listOfCategory = getProductsByCategory();
+        for (Map.Entry<String, List<Product>> categoryListMap : listOfCategory.entrySet()) {
+            uniqueCategoryName.add(categoryListMap.getKey());
         }
         return uniqueCategoryName;
     }
@@ -71,10 +71,10 @@ public class ProductService {
     }
 
     public List<Product> getProductListByCategoryName(String categoryName){
-        Map<Category,List<Product>> categoryListMap = getProductsByCategory();
+        Map<String,List<Product>> categoryListMap = getProductsByCategory();
         List<Product> listOfProductsByCategory=new ArrayList<>();
-        for (Map.Entry<Category, List<Product>> clm : categoryListMap.entrySet()) {
-            if(categoryName.equals(clm.getKey().name())){
+        for (Map.Entry<String, List<Product>> clm : categoryListMap.entrySet()) {
+            if(categoryName.equals(clm.getKey())){
                 listOfProductsByCategory=clm.getValue();
             }
         }

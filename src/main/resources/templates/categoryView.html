@@ -1,7 +1,74 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <style>
+* {
+  box-sizing: border-box;
+}
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #ffe6e6;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: black;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 800px;
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+table{
+
+        }
+ h1{
+
+ }
+  .form-group {
+        display: inline-block;
+        float:left;
+    }
+.btn-group button {
+  background-color: #aaa7a1;
+  border: 1px solid grey;
+  color: white; /* White text */
+  padding: 10px 24px;
+  cursor: pointer;
+  float: left;
+  font-size:30px;
+}
+</style>
 
     <title> Strona główna</title>
     <meta charset="utf-8">
@@ -9,88 +76,28 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
     <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
     <script th:src="@{webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
-    <style>
-  .navbar {
-  margin-bottom: 0;
-  background-color: #FF69B4;
-  z-index: 9999;
-  border: 0;
-  font-size: 12px !important;
-  line-height: 1.42857143 !important;
-  letter-spacing: 4px;
-  border-radius: 0;
-}
-
-.navbar li a, .navbar .navbar-brand {
-  color: #fff !important;
-}
-
-.navbar-nav li a:hover, .navbar-nav li.active a {
-  color: #FF69B4 !important;
-  background-color: #fff !important;
-}
-
-.navbar-default .navbar-toggle {
-  border-color: transparent;
-  color: #fff !important;
-}
-
-
-
-
-  </style>
 
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="60">
-
-
-
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/cart">KOSZYK</a></li>
-                <li><a href="/admin/products/list">ADMIN</a></li>
-                <li><a href="/about">O NAS</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
-<div class="jumbotron text-center">
-    <h1>ANGIE CLOTHES</h1>
+<body>
+<header>
     <h2>SKLEP INTERNETOWY</h2>
-    <h5><i>Show me what you are wearing and I will tell you who you are...</i></h5>
+</header>
+<div class="btn-group" style="width:100%">
+    <button style="width:33.3%" onclick="location.href='/cart'" >Koszyk</button>
+    <button style="width:33.3%" onclick="location.href='/about'"  >O nas</button>
+    <button style="width:33.3%" onclick="location.href='/admin/products/list'" type="button">Panel Administratora</button>
+
 </div>
-
-
-
-<div class="container">
-    <div class="row justify-content-md-center">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Kategorie</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="category : ${categories}">
+<section>
+    <nav>
+    </nav>
+        <h1>KATEGORIE PRODUKTOWE</h1>
+    <table>
+        <tr th:each="category: ${categories}">
             <td><a th:href="${'/category?category='+category}"><span th:text="${category}"></span></a></td>
         </tr>
-        </tbody>
     </table>
-    </div>
-</div>
-
-
+</section>
 
 </body>
 </html>

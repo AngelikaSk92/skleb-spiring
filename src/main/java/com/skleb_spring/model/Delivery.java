@@ -1,7 +1,8 @@
 package com.skleb_spring.model;
 
+import javax.persistence.Embeddable;
 import java.math.BigDecimal;
-
+@Embeddable
 public class Delivery {
 
     private String deliveryName;

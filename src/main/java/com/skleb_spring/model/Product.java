@@ -1,6 +1,5 @@
 package com.skleb_spring.model;
-
-
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -8,10 +7,21 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Product.retrieveAllProducts",
+                query = "SELECT * FROM PRODUCT",
+                resultClass =Product.class
+        )
+})
+
+@Entity
+@Table(name = "PRODUCT")
 public class Product {
 
     @NotNull(message = "Nazwa produktu nie może być pusta")
     @Size(min=3, max=100, message = "długość nazwy produktu musi być pomiędzy 3 a 100 znaków")
+    @Id
     private String name;
 
     private String description;
@@ -20,18 +30,17 @@ public class Product {
     @Min(value=0, message = "Cena nie może być mniejsza niż 0")
     @Max(value = 10000, message = "cena nie może przekroczyć 10000")
     private BigDecimal price;
-
-    private Category category;
+    private String category;
 
 
     public Product(String name, String description, BigDecimal price) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.category=Category.INNE;
+        this.category="INNE";
     }
 
-    public Product(String name, String description, BigDecimal price, Category category) {
+    public Product(String name, String description, BigDecimal price, String category) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -40,7 +49,7 @@ public class Product {
 
     public Product() {
         this.price=new BigDecimal(0);
-        this.category=Category.INNE;
+        this.category="INNE";
     }
 
     public void setName(String name) {
@@ -55,11 +64,11 @@ public class Product {
         this.price = price;
     }
 
-    public void setCategory(Category category){
+    public void setCategory(String category){
         this.category=category;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 

@@ -41,7 +41,7 @@ public class Starter implements CommandLineRunner {
 //        }
 
 
-        Product product = new Product("TEST", "TEST TEST", new BigDecimal(1000), Category.UBRANIA);
+        Product product = new Product("TEST", "TEST TEST", new BigDecimal(1000), "UBRANIA");
 
         cartDAO.addProductToCart(product, 1);
         cartDAO.addProductToCart(product, 1);

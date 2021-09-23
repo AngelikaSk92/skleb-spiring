@@ -8,36 +8,40 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tr {
+  border-bottom: 1px solid #ddd;
+}
+</style>
 </head>
 
-
-</head>
 <body>
 <div class="container">
     <h2>Panel administratora</h2>
-    <br>
-    <br>
-    <br>
-    <table class="table">
-        <thead>
+    <table>
         <tr>
-            <th>produkt</th>
-            <th>cena</th>
-            <th>kategoria</th>
-            <th>akcja</th>
-            <th>akcja</th>
+            <th>Produkt</th>
+            <th>Cena</th>
+            <th>Kategoria</th>
+            <th>Usuwanie produktu</th>
+            <th>Edycja produktu</th>
         </tr>
-        </thead>
-        <tbody>
-        <tr th:each="product : ${products}">
+        <tr th:each="product : ${products}" >
             <td><a th:href="${'/product?name='+product.name}"><span th:text="${product.name}"></span></a></td>
-            <td th:text="${product.price}">/<td>
-            <td th:text="${product.category}">/<td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.category}"></td>
             <td><a th:href="${'/product/delete/'+product.name}">Usun</a></td>
             <td><a th:href="${'/product/edit/'+product.name}">Edytuj</a></td>
         </tr>
-        </tbody>
     </table>
+
+
 </div>
 
 <div class="row align-items-center">

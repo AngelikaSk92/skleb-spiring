@@ -79,11 +79,7 @@ public class CartController {
 
     @RequestMapping(value = "/cart/order/{orderNumber}")
     public String finishDelivery(@PathVariable("orderNumber") int orderNumber,  Model model){
-//            Order order = orderDAO.getOrderByOrderNumber(orderNumber);
-//            model.addAttribute("cartValueFromMyOrder",order.getAmount());
-//            model.addAttribute("deliveryOptionsFromMyOrder", order.getDelivery().getDeliveryName());
-//            model.addAttribute("deliveryPriceFromMyOrder", order.getDelivery().getDeliveryPrice());
-//            model.addAttribute("totalToPayFromMyOrder", order.getAmount().add(order.getDelivery().getDeliveryPrice()));
+
         return "orderfinishpage";
     }
 

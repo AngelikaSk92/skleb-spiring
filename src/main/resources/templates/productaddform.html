@@ -10,23 +10,24 @@
 
 </head>
 <body>
-<div class="container">
-    <form class="form-horizontal" th:object="${emptyProduct}" th:action="@{/admin/products/list}" th:method="post">
+<h1 style="background-color:#f7bbd3;">DODAJ NOWY PRODUKT</h1>
+<div>
+    <form th:object="${emptyProduct}" th:action="@{/admin/products/list}" th:method="post">
         <div class="form-group">
             <label class="control-label">nazwa produktu:</label>
             <input type="text" class="form-control" th:field="*{name}">
             <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
         </div>
-        <div class="form-group">
+        <div>
             <label class="control-label">opis:</label>
             <input type="text" class="form-control" th:field="*{description}">
         </div>
-        <div class="form-group">
+        <div>
             <label class="control-label">cena:</label>
             <input type="number" placeholder="0.00" required name="price" min="0" value="0" step="0.01" class="form-control" th:field="*{price}">
             <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
         </div>
-        <div class="form-group">
+        <div >
             <label class="control-label">kategoria:</label>
             <select name="category" >
                 <option th:each="cat : ${T(com.skleb_spring.model.Category).values()}"
@@ -34,7 +35,7 @@
             </select>
         </div>
         <div class="row">
-            <button type="submit" class="btn btn-default">Dodaj produkt</button>
+            <button type="submit">Dodaj produkt</button>
         </div>
 
     </form>

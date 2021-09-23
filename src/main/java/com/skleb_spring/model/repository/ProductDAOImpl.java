@@ -30,8 +30,7 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public Product createProductStringValues(String name, String description, double price, String category) {
         BigDecimal newPrice=new BigDecimal(price);
-        Category newCategory=Category.valueOf(category);
-        Product product = new Product(name,description,newPrice,newCategory);
+        Product product = new Product(name,description,newPrice,category);
         products.add(product);
         return product;
     }
@@ -43,13 +42,13 @@ public class ProductDAOImpl implements ProductDAO {
 
     @PostConstruct
     public void buildShopDB(){
-        addProduct(new Product("Torebka MK", "Torebka Michael Kors - listonoszka", new BigDecimal("1025.00"), Category.DODATKI));
-        addProduct(new Product("Kolczyki", "Pozłacane kolczyki", new BigDecimal("29.99"), Category.DODATKI));
-        addProduct(new Product("Botki damskie", "Czarne Botki na obcasie", new BigDecimal("229.99"), Category.OBUWIE));
-        addProduct(new Product("Kurtka pikowana", "Krótka kurtka pikowana z wysokim kołnierzem i długimi rękawami", new BigDecimal("249.99"), Category.UBRANIA));
-        addProduct(new Product("Golf damski", "Elegancki golf w pięknym kolorze. Wykonany z dobrej jakości materiału.", new BigDecimal("129.99"), Category.UBRANIA));
-        addProduct(new Product("Kozaki zamszowe", "Zamszowe obuwie na wyższej podeszwie w klasycznym kolorze.", new BigDecimal("189.99"), Category.OBUWIE));
-        addProduct(new Product("Bluzka koszulowa", "Elegancka koszula o prostym kroju w stonowanym, jednolitym kolorze. Wykonana z delikatnego materiału z połączeniem koronki.", new BigDecimal("119.99"), Category.UBRANIA));
+        addProduct(new Product("Torebka MK", "Torebka Michael Kors - listonoszka", new BigDecimal("1025.00"), "DODATKI"));
+        addProduct(new Product("Kolczyki", "Pozłacane kolczyki", new BigDecimal("29.99"), "DODATKI"));
+        addProduct(new Product("Botki damskie", "Czarne Botki na obcasie", new BigDecimal("229.99"), "OBUWIE"));
+        addProduct(new Product("Kurtka pikowana", "Krótka kurtka pikowana z wysokim kołnierzem i długimi rękawami", new BigDecimal("249.99"), "UBRANIA"));
+        addProduct(new Product("Golf damski", "Elegancki golf w pięknym kolorze. Wykonany z dobrej jakości materiału.", new BigDecimal("129.99"), "UBRANIA"));
+        addProduct(new Product("Kozaki zamszowe", "Zamszowe obuwie na wyższej podeszwie w klasycznym kolorze.", new BigDecimal("189.99"), "OBUWIE"));
+        addProduct(new Product("Bluzka koszulowa", "Elegancka koszula o prostym kroju w stonowanym, jednolitym kolorze. Wykonana z delikatnego materiału z połączeniem koronki.", new BigDecimal("119.99"), "UBRANIA"));
     }
 
 }

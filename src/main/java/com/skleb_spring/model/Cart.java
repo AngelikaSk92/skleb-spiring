@@ -1,8 +1,9 @@
 package com.skleb_spring.model;
 
+import javax.persistence.Embeddable;
 import java.util.HashMap;
 import java.util.Map;
-
+@Embeddable
 public class Cart {
 
     private Map<Product, Integer> cart;

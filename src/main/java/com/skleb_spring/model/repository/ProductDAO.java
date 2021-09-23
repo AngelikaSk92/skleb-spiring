@@ -2,6 +2,7 @@ package com.skleb_spring.model.repository;
 
 import com.skleb_spring.model.Category;
 import com.skleb_spring.model.Product;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
